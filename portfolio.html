@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">S DAS</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Home Section ===== -->
+  <section id="home" class="home">
+    <div class="home-content">
+      <h1>Hello, I'm <span>Subhankar Das</span></h1>
+      <p>I'm a Web Developer passionate about building modern and responsive websites.</p>
+      <button onclick="scrollToSection('contact')">Hire Me</button>
+    </div>
+    <div class="Home_img">
+        <img src="My_Photo.png" alt="My Photo">
+    </div>
+  </section>
+
+  <!-- ===== About Section ===== -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I am a dedicated and detail-oriented developer who enjoys turning ideas into reality
+      using code. I specialize in front-end development with a focus on creating clean and
+      user-friendly experiences.
+    </p>
+  </section>
+
+<!-- ===== Projects Section =====  -->
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>CRUD App</h3>
+        <p>A full-stack Laravel CRUD application with authentication.</p>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Personal responsive website built using HTML, CSS, and JS.</p>
+      </div>
+      <div class="project-card">
+        <h3>Blog Platform</h3>
+        <p>A CMS-style blog system where users can post and comment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact Section =====  -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p id="footer">© 2025 Subhankar Das | All Rights Reserved</p>
+  </footer>
+
+  <script src="portfolio.js">
+
+</script>
+</body>
+</html>
