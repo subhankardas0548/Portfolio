@@ -1,727 +1,724 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Load Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Load Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Custom CSS for Glassmorphism, Neumorphism, and Animations -->
-    <style>
-        /* Set base font */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Add scroll-padding-top to account for the fixed header */
-        html {
-            scroll-padding-top: 5rem; /* 80px, same as header height */
-        }
-
-        /* --- Glassmorphism Header --- */
-        .glass-header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            animation: slideInDown 0.5s ease-out;
-        }
-
-        .dark .glass-header {
-            background: rgba(17, 24, 39, 0.2); /* dark:bg-gray-900 with opacity */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* --- Neumorphism Contact Form --- */
-        .neumorphic-form-light {
-            background: #e0e5ec;
-            box-shadow: 9px 9px 16px #a3b1c6, -9px -9px 16px #ffffff;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Portfolio</title>
         
-        .neumorphic-input-light {
-            background: #e0e5ec;
-            box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
-        }
-
-        .neumorphic-btn-light {
-            background: #e0e5ec;
-            box-shadow: 6px 6px 10px #a3b1c6, -6px -6px 10px #ffffff;
-            transition: all 0.2s ease-in-out;
-        }
-        .neumorphic-btn-light:hover {
-            box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
-        }
-        .neumorphic-btn-light:active {
-            box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
-        }
-
-        /* Dark Mode Neumorphism */
-        .dark .neumorphic-form-dark {
-            background: #2b3038;
-            box-shadow: 9px 9px 16px #1c1f24, -9px -9px 16px #3a414c;
-        }
+        <!-- Load Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
         
-        .dark .neumorphic-input-dark {
-            background: #2b3038;
-            box-shadow: inset 6px 6px 10px #1c1f24, inset -6px -6px 10px #3a414c;
-        }
-
-        .dark .neumorphic-btn-dark {
-            background: #2b3038;
-            box-shadow: 6px 6px 10px #1c1f24, -6px -6px 10px #3a414c;
-        }
-        .dark .neumorphic-btn-dark:hover {
-            box-shadow: inset 6px 6px 10px #1c1f24, inset -6px -6px 10px #3a414c;
-        }
-        .dark .neumorphic-btn-dark:active {
-            box-shadow: inset 6px 6px 10px #1c1f24, inset -6px -6px 10px #3a414c;
-        }
-
-        /* --- Profile Image Hover Shadow --- */
-        .profile-image-hover {
-            transition: all 0.3s ease;
-        }
-        .profile-image-hover:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        .dark .profile-image-hover:hover {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* --- Section Fade-in Animation --- */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        <!-- Load Inter Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
         
-        /* --- Skill Bar Animation --- */
-        .skill-bar-level {
-            width: 0;
-            transition: width 1.5s ease-out;
-        }
-        .fade-in-section.is-visible .skill-bar-level {
-            width: var(--skill-level, '0%');
-        }
+        <!-- Load Font Awesome for Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        /* --- Header Animation --- */
-        @keyframes slideInDown {
-            from {
-                transform: translateY(-100%);
+        <!-- Custom CSS for Glassmorphism, Neumorphism, and Animations -->
+        <style>
+            /* Set base font */
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Add scroll-padding-top to account for the fixed header */
+            html {
+                scroll-padding-top: 5rem; /* 80px, same as header height */
+            }
+
+            /* --- Glassmorphism Header --- */
+            .glass-header {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                animation: slideInDown 0.5s ease-out;
+            }
+
+            .dark .glass-header {
+                background: rgba(17, 24, 39, 0.2); /* dark:bg-gray-900 with opacity */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* --- Neumorphism Contact Form --- */
+            .neumorphic-form-light {
+                background: #e0e5ec;
+                box-shadow: 9px 9px 16px #a3b1c6, -9px -9px 16px #ffffff;
+            }
+            
+            .neumorphic-input-light {
+                background: #e0e5ec;
+                box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
+            }
+
+            .neumorphic-btn-light {
+                background: #e0e5ec;
+                box-shadow: 6px 6px 10px #a3b1c6, -6px -6px 10px #ffffff;
+                transition: all 0.2s ease-in-out;
+            }
+            .neumorphic-btn-light:hover {
+                box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
+            }
+            .neumorphic-btn-light:active {
+                box-shadow: inset 6px 6px 10px #a3b1c6, inset -6px -6px 10px #ffffff;
+            }
+
+            /* Dark Mode Neumorphism */
+            .dark .neumorphic-form-dark {
+                background: #2b3038;
+                box-shadow: 9px 9px 16px #1c1f24, -9px -9px 16px #3a414c;
+            }
+            
+            .dark .neumorphic-input-dark {
+                background: #2b3038;
+                box-shadow: inset 6px 6px 10px #1c1f24, inset -6px -6px 10px #3a414c;
+            }
+
+            .dark .neumorphic-btn-dark {
+                background: #2b3038;
+                box-shadow: 6px 6px 10px #1c1f24, -6px -6px 10px #3a414c;
+            }
+            .dark .neumorphic-btn-dark:hover {
+                box-shadow: inset 6px 6px 10px #1c1f24, inset -6px -6px 10px #3a414c;
+            }
+            .dark .neumorphic-btn-dark:active {
+                box-shadow: inset 6px 6px 10px #1c1f24, inset -6px -6px 10px #3a414c;
+            }
+
+            /* --- Profile Image Hover Shadow --- */
+            .profile-image-hover {
+                transition: all 0.3s ease;
+            }
+            .profile-image-hover:hover {
+                transform: scale(1.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            .dark .profile-image-hover:hover {
+                box-shadow: 0 0 25px rgba(59, 130, 246, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            /* --- Section Fade-in Animation --- */
+            .fade-in-section {
                 opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             }
-            to {
-                transform: translateY(0);
+            .fade-in-section.is-visible {
                 opacity: 1;
+                transform: translateY(0);
             }
-        }
-    </style>
-    
-    <!-- Configure Tailwind for Dark Mode -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // 'class' enables manual toggling
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
+            
+            /* --- Skill Bar Animation --- */
+            .skill-bar-level {
+                width: 0;
+                transition: width 1.5s ease-out;
+            }
+            .fade-in-section.is-visible .skill-bar-level {
+                width: var(--skill-level, '0%');
+            }
+
+            /* --- Header Animation --- */
+            @keyframes slideInDown {
+                from {
+                    transform: translateY(-100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        </style>
+        
+        <!-- Configure Tailwind for Dark Mode -->
+        <script>
+            tailwind.config = {
+                darkMode: 'class', // 'class' enables manual toggling
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ['Inter', 'sans-serif'],
+                        },
                     },
                 },
-            },
-        }
-    </script>
-</head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            }
+        </script>
+    </head>
+    <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-    <!-- ======== HEADER ======== -->
-    <header class="fixed top-0 left-0 right-0 z-50 h-20 glass-header">
-        <div class="container mx-auto max-w-7xl px-4 h-full flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#home" class="text-3xl font-bold text-blue-600 dark:text-blue-400">S<span style="color: antiquewhite;">D.</span></a>
+        <!-- ======== HEADER ======== -->
+        <header class="fixed top-0 left-0 right-0 z-50 h-20 glass-header">
+            <div class="container mx-auto max-w-7xl px-4 h-full flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#home" class="text-3xl font-bold text-blue-600 dark:text-blue-400">S<span style="color: antiquewhite;">D.</span></a>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="#home" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-                <a href="#about" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
-                <a href="#projects" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
-                <a href="#services" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
-                <a href="#contact" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
-            </nav>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#about" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                    <a href="#projects" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                    <a href="#services" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
+                    <a href="#contact" class="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                </nav>
 
-            <div class="flex items-center space-x-4">
-                <!-- Theme Toggle Button -->
-                <button id="themeToggleBtn" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 focus:outline-none">
-                    <!-- Sun Icon (hidden in dark mode) -->
-                    <svg id="theme-icon-light" class="h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                    <!-- Moon Icon (hidden in light mode) -->
-                    <svg id="theme-icon-dark" class="h-5 w-5 text-gray-100 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                </button>
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggleBtn" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 focus:outline-none">
+                        <!-- Sun Icon (hidden in dark mode) -->
+                        <svg id="theme-icon-light" class="h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <!-- Moon Icon (hidden in light mode) -->
+                        <svg id="theme-icon-dark" class="h-5 w-5 text-gray-100 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuOpenBtn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 focus:outline-none">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuOpenBtn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ======== MOBILE MENU ======== -->
+        <div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm">
+            <div class="fixed top-0 right-0 w-64 h-full bg-white dark:bg-gray-800 shadow-lg p-6">
+                <!-- Close Button -->
+                <button id="mobileMenuCloseBtn" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+                <!-- Mobile Nav Links -->
+                <nav class="flex flex-col space-y-6 mt-16">
+                    <a href="#home" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#about" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                    <a href="#projects" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                    <a href="#services" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
+                    <a href="#contact" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                </nav>
             </div>
         </div>
-    </header>
 
-    <!-- ======== MOBILE MENU ======== -->
-    <div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm">
-        <div class="fixed top-0 right-0 w-64 h-full bg-white dark:bg-gray-800 shadow-lg p-6">
-            <!-- Close Button -->
-            <button id="mobileMenuCloseBtn" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <!-- Mobile Nav Links -->
-            <nav class="flex flex-col space-y-6 mt-16">
-                <a href="#home" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-                <a href="#about" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
-                <a href="#projects" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
-                <a href="#services" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
-                <a href="#contact" class="mobile-nav-link text-xl font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
-            </nav>
-        </div>
-    </div>
+        <!-- ======== MAIN CONTENT ======== -->
+        <main class="pt-20"> <!-- Padding top to offset header -->
 
-    <!-- ======== MAIN CONTENT ======== -->
-    <main class="pt-20"> <!-- Padding top to offset header -->
-
-        <!-- --- Home Section --- -->
-        <section id="home" class="min-h-screen flex items-center py-20 fade-in-section">
-            <div class="container mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
-                <!-- Left Content -->
-                <div class="text-center md:text-left">
-                    <span class="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400">Hello, I'm</span>
-                    <h1 class="text-5xl md:text-7xl font-extrabold my-3">Subhankar Das</h1>
-                    <h2 class="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">A Creative Web Developer</h2>
-                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-md mx-auto md:mx-0">
-                        I specialize in building (and occasionally designing) exceptional digital experiences. 
-                        Welcome to my personal corner of the internet.
-                    </p>
-                    <!-- Social Icons -->
-                    <div class="mt-8 flex justify-center md:justify-start space-x-6">
-                        <a href="http://github.com/subhankardas0548" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-transform duration-300 hover:scale-125">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/subhankar-das-2042b7228/" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-transform duration-300 hover:scale-125">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="https://wa.me/+918388983330?text=Hello Subhankar!" class="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 transition-transform duration-300 hover:scale-125">
-                            <i class="fab fa-whatsapp fa-2x"></i>
-                        </a>
-                        <a href="https://www.instagram.com/subhankardas68148?igsh=aXR1dzEyNmNiM2oz" class="text-gray-500 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-transform duration-300 hover:scale-125">
-                            <i class="fab fa-instagram fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Right Image -->
-                <div class="flex justify-center">
-                    <img 
-                        src="my_img.jpg" 
-                        alt="Profile Picture" 
-                        class="w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-8 border-white dark:border-gray-800 profile-image-hover"
-                    >
-                </div>
-            </div>
-        </section>
-
-        <!-- --- About Section --- -->
-        <section id="about" class="min-h-screen bg-white dark:bg-gray-800 py-20 fade-in-section">
-            <div class="container mx-auto max-w-7xl px-4">
-                <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <!-- Image -->
-                    <div class="flex justify-center">
-                        <img 
-                            src="my_img.jpg" 
-                            alt="About Me Picture" 
-                            class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-8 border-gray-100 dark:border-gray-700 profile-image-hover"
-                        >
-                    </div>
-                    <!-- Content -->
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                            I'm a passionate web developer with a love for clean code, intuitive design, and solving complex problems. 
-                            My journey began with a simple "Hello World" and has grown into a full-fledged passion for creating responsive,
-                            user-friendly websites .
-                        </p>
+            <!-- --- Home Section --- -->
+            <section id="home" class="min-h-screen flex items-center py-20 fade-in-section">
+                <div class="container mx-auto max-w-7xl px-4">
+                    <!-- Mobile: Image first, then content -->
+                    <div class="flex flex-col md:grid md:grid-cols-2 gap-10 items-center">
+                        <!-- Image - First on mobile -->
+                        <div class="flex justify-center order-1 md:order-2">
+                            <img 
+                                src="my_img.jpg" 
+                                alt="Profile Picture" 
+                                class="w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-8 border-white dark:border-gray-800 profile-image-hover"
+                            >
+                        </div>
                         
-                        <!-- Skills -->
-                        <h3 class="text-2xl font-semibold mb-6">My Professional Skills</h3>
-                        <div class="space-y-4">
-                            <!-- Skill 1 -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">HTML & CSS</span>
-                                    <span class="font-medium">95%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-level bg-blue-600 h-2.5 rounded-full" style="--skill-level: 95%;"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 2 -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">JavaScript & React</span>
-                                    <span class="font-medium">85%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-level bg-blue-600 h-2.5 rounded-full" style="--skill-level: 85%;"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 3 -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Node.js & Express</span>
-                                    <span class="font-medium">75%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-level bg-blue-600 h-2.5 rounded-full" style="--skill-level: 75%;"></div>
-                                </div>
+                        <!-- Content - Second on mobile -->
+                        <div class="text-center md:text-left order-2 md:order-1">
+                            <span class="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400">Hello, I'm</span>
+                            <h1 class="text-5xl md:text-7xl font-extrabold my-3">Subhankar Das</h1>
+                            <h2 class="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300">A Creative Web Developer</h2>
+                            <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-md mx-auto md:mx-0">
+                                I specialize in building (and occasionally designing) exceptional digital experiences. 
+                                Welcome to my personal corner of the internet.
+                            </p>
+                            <!-- Social Icons -->
+                            <div class="mt-8 flex justify-center md:justify-start space-x-6">
+                                <a href="http://github.com/subhankardas0548" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-transform duration-300 hover:scale-125">
+                                    <i class="fab fa-github fa-2x"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/subhankar-das-2042b7228/" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-transform duration-300 hover:scale-125">
+                                    <i class="fab fa-linkedin fa-2x"></i>
+                                </a>
+                                <a href="https://wa.me/+918388983330?text=Hello Subhankar!" class="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 transition-transform duration-300 hover:scale-125">
+                                    <i class="fab fa-whatsapp fa-2x"></i>
+                                </a>
+                                <a href="https://www.instagram.com/subhankardas68148?igsh=aXR1dzEyNmNiM2oz" class="text-gray-500 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-transform duration-300 hover:scale-125">
+                                    <i class="fab fa-instagram fa-2x"></i>
+                                </a>
                             </div>
                         </div>
-
-                        <!-- Resume Button -->
-                        <a 
-                            href="Resume.pdf" 
-                            download="SubhankarDas_Resume.pdf"
-                            class="inline-block mt-8 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
-                        >
-                            Download My Resume
-                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- --- Projects Section --- -->
-        <section id="projects" class="min-h-screen py-20 fade-in-section">
-            <div class="container mx-auto max-w-7xl px-4">
-                <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Project Card 1 -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
-                        <img src="ToDoList_img.png" alt="Project 1" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">To-Do-List</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                A Productivity website built with php-mysql, and Laravel.
+            <!-- --- About Section --- -->
+            <section id="about" class="min-h-screen bg-white dark:bg-gray-800 py-20 fade-in-section">
+                <div class="container mx-auto max-w-7xl px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                        <!-- Image -->
+                        <div class="flex justify-center">
+                            <img 
+                                src="my_img.jpg" 
+                                alt="About Me Picture" 
+                                class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-8 border-gray-100 dark:border-gray-700 profile-image-hover"
+                            >
+                        </div>
+                        <!-- Content -->
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                                I'm a passionate web developer with a love for clean code, intuitive design, and solving complex problems. 
+                                My journey began with a simple "Hello World" and has grown into a full-fledged passion for creating responsive,
+                                user-friendly websites .
                             </p>
-                            <a href="https://focusflow.online/" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">View Details &rarr;</a>
+                            
+                            <!-- Skills -->
+                            <h3 class="text-2xl font-semibold mb-6">My Professional Skills</h3>
+                            <div class="space-y-4">
+                                <!-- Skill 1 -->
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">HTML & CSS</span>
+                                        <span class="font-medium">95%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="skill-bar-level bg-blue-600 h-2.5 rounded-full" style="--skill-level: 95%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Skill 2 -->
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">JavaScript & React</span>
+                                        <span class="font-medium">85%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="skill-bar-level bg-blue-600 h-2.5 rounded-full" style="--skill-level: 85%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Skill 3 -->
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">Node.js & Express</span>
+                                        <span class="font-medium">75%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="skill-bar-level bg-blue-600 h-2.5 rounded-full" style="--skill-level: 75%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Resume Button -->
+                            <a 
+                                href="Resume.pdf" 
+                                download="SubhankarDas_Resume.pdf"
+                                class="inline-block mt-8 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+                            >
+                                Download My Resume
+                            </a>
                         </div>
                     </div>
-                    
-                    <!-- Project Card 2 -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
-                        <img src="Portolio_img.png" alt="Project 2" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Portfolio Website</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                This very portfolio, built with HTML, CSS, and JS.
-                            </p>
-                            <a href="https://subhankar.tech/" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">View Details &rarr;</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 3 -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
-                        <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Task Management App</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                A simple and clean task app with drag-and-drop functionality.
-                            </p>
-                            <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">View Details &rarr;</a>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- --- Services Section --- -->
-        <section id="services" class="min-h-screen bg-white dark:bg-gray-800 py-20 fade-in-section">
-            <div class="container mx-auto max-w-7xl px-4">
-                <h2 class="text-4xl font-bold text-center mb-12">What I Offer</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    
-                    <!-- Service Card 1 -->
-                    <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <div class="text-blue-600 dark:text-blue-400 mb-4">
-                            <i class="fas fa-code fa-3x"></i>
+            <!-- --- Projects Section --- -->
+            <section id="projects" class="min-h-screen py-20 fade-in-section">
+                <div class="container mx-auto max-w-7xl px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Project Card 1 -->
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
+                            <img src="ToDoList_img.png" alt="Project 1" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold mb-2">To-Do-List</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    A Productivity website built with php-mysql, and Laravel.
+                                </p>
+                                <a href="https://focusflow.online/" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">View Details &rarr;</a>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-2">Web Development</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            From static landing pages to complex web applications, I build fast, responsive, and reliable websites.
-                        </p>
-                    </div>
-
-                    <!-- Service Card 2 -->
-                    <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <div class="text-blue-600 dark:text-blue-400 mb-4">
-                            <i class="fas fa-palette fa-3x"></i>
+                        
+                        <!-- Project Card 2 -->
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
+                            <img src="Portolio_img.png" alt="Project 2" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold mb-2">Portfolio Website</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    This very portfolio, built with HTML, CSS, and JS.
+                                </p>
+                                <a href="https://subhankar.tech/" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">View Details &rarr;</a>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-2">UI/UX Design</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            I design user-centric interfaces that are not only beautiful but also intuitive and easy to use.
-                        </p>
-                    </div>
 
-                    <!-- Service Card 3 -->
-                    <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <div class="text-blue-600 dark:text-blue-400 mb-4">
-                            <i class="fas fa-mobile-alt fa-3x"></i>
+                        <!-- Project Card 3 -->
+                        <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105">
+                            <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold mb-2">Task Management App</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    A simple and clean task app with drag-and-drop functionality.
+                                </p>
+                                <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">View Details &rarr;</a>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-2">Responsive Design</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Your website will look and function perfectly on all devices, from mobile phones to desktops.
-                        </p>
-                    </div>
 
-                    <!-- New Service Card 5: Vibe Coding -->
-                    <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <div class="text-blue-600 dark:text-blue-400 mb-4">
-                            <i class="fas fa-laptop-code fa-3x"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-2">Vibe Coding</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Crafting applications with a focus on smooth animations, clean state management, and a great user feel.
-                        </p>
                     </div>
-
                 </div>
+            </section>
+
+            <!-- --- Services Section --- -->
+            <section id="services" class="min-h-screen bg-white dark:bg-gray-800 py-20 fade-in-section">
+                <div class="container mx-auto max-w-7xl px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12">What I Offer</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                        
+                        <!-- Service Card 1 -->
+                        <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                            <div class="text-blue-600 dark:text-blue-400 mb-4">
+                                <i class="fas fa-code fa-3x"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">Web Development</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                From static landing pages to complex web applications, I build fast, responsive, and reliable websites.
+                            </p>
+                        </div>
+
+                        <!-- Service Card 2 -->
+                        <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                            <div class="text-blue-600 dark:text-blue-400 mb-4">
+                                <i class="fas fa-palette fa-3x"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">UI/UX Design</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                I design user-centric interfaces that are not only beautiful but also intuitive and easy to use.
+                            </p>
+                        </div>
+
+                        <!-- Service Card 3 -->
+                        <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                            <div class="text-blue-600 dark:text-blue-400 mb-4">
+                                <i class="fas fa-mobile-alt fa-3x"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">Responsive Design</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Your website will look and function perfectly on all devices, from mobile phones to desktops.
+                            </p>
+                        </div>
+
+                        <!-- New Service Card 5: Vibe Coding -->
+                        <div class="bg-gray-100 dark:bg-gray-900 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                            <div class="text-blue-600 dark:text-blue-400 mb-4">
+                                <i class="fas fa-laptop-code fa-3x"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">Vibe Coding</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Crafting applications with a focus on smooth animations, clean state management, and a great user feel.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ======== FOOTER (Contact Section) ======== -->
+        <footer id="contact" class="py-20 bg-gray-100 dark:bg-gray-900 fade-in-section">
+            <div class="container mx-auto max-w-3xl px-4">
+                <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
+                <div class="rounded-3xl p-8 md:p-12 neumorphic-form-light dark:neumorphic-form-dark">
+                    <form id="contactForm">
+                        <div id="form-message" class="hidden mb-4 p-3 rounded-lg bg-green-200 text-green-800 text-center"></div>
+                        <div class="mb-6">
+                            <label style="color:#3a414c;" for="name" class="block text-sm font-medium mb-2 ml-3">Your Name</label>
+                            <input style="color:#506383;" type="text" id="name" name="Name" required
+                                class="w-full p-4 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 neumorphic-input-light dark:neumorphic-input-dark text-gray-900 dark:text-gray-100"
+                            >
+                        </div>
+                        <div class="mb-6">
+                            <label style="color:#3a414c;" for="email" class="block text-sm font-medium mb-2 ml-3">Your Email</label>
+                            <input style="color:#506383;" type="email" id="email" name="Email" required
+                                class="w-full p-4 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 neumorphic-input-light dark:neumorphic-input-dark text-gray-900 dark:text-gray-100"
+                            >
+                        </div>
+                        <div class="mb-6">
+                            <label style="color:#3a414c;" for="message" class="block text-sm font-medium mb-2 ml-3">Message</label>
+                            <textarea style="color:#506383;" id="message" name="Message" rows="5" required
+                                class="w-full p-4 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 neumorphic-input-light dark:neumorphic-input-dark text-gray-900 dark:text-gray-100"
+                            ></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit"
+                                class="px-10 py-4 rounded-2xl font-semibold text-lg text-blue-800 dark:text-blue-300 neumorphic-btn-light dark:neumorphic-btn-dark focus:outline-none"
+                            >
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <p class="text-center text-gray-500 dark:text-gray-400 mt-12">
+                    &copy; 2025 Subhankar Das. All rights reserved.
+                </p>
             </div>
-        </section>
+        </footer>
 
-    </main>
+        <!-- ======== JAVASCRIPT ======== -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
 
-    <!-- ======== FOOTER (Contact Section) ======== -->
-    <footer id="contact" class="py-20 bg-gray-100 dark:bg-gray-900 fade-in-section">
-        <div class="container mx-auto max-w-3xl px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
-            <div class="rounded-3xl p-8 md:p-12 neumorphic-form-light dark:neumorphic-form-dark">
-                <form id="contactForm">
-                    <div id="form-message" class="hidden mb-4 p-3 rounded-lg bg-green-200 text-green-800 text-center"></div>
-                    <div class="mb-6">
-                        <label style="color:#3a414c;" for="name" class="block text-sm font-medium mb-2 ml-3">Your Name</label>
-                        <input style="color:#506383;" type="text" id="name" name="Name" required
-                            class="w-full p-4 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 neumorphic-input-light dark:neumorphic-input-dark text-gray-900 dark:text-gray-100"
-                        >
-                    </div>
-                    <div class="mb-6">
-                        <label style="color:#3a414c;" for="email" class="block text-sm font-medium mb-2 ml-3">Your Email</label>
-                        <input style="color:#506383;" type="email" id="email" name="Email" required
-                            class="w-full p-4 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 neumorphic-input-light dark:neumorphic-input-dark text-gray-900 dark:text-gray-100"
-                        >
-                    </div>
-                    <div class="mb-6">
-                        <label style="color:#3a414c;" for="message" class="block text-sm font-medium mb-2 ml-3">Message</label>
-                        <textarea style="color:#506383;" id="message" name="Message" rows="5" required
-                            class="w-full p-4 border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 neumorphic-input-light dark:neumorphic-input-dark text-gray-900 dark:text-gray-100"
-                        ></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit"
-                            class="px-10 py-4 rounded-2xl font-semibold text-lg text-blue-800 dark:text-blue-300 neumorphic-btn-light dark:neumorphic-btn-dark focus:outline-none"
-                        >
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-            </div>
-            
-            <p class="text-center text-gray-500 dark:text-gray-400 mt-12">
-                &copy; 2025 Subhankar Das. All rights reserved.
-            </p>
-        </div>
-    </footer>
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIconLight = document.getElementById('theme-icon-light');
+        const themeIconDark = document.getElementById('theme-icon-dark');
+        const html = document.documentElement;
 
-    <!-- ======== JAVASCRIPT ======== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeIconLight = document.getElementById('theme-icon-light');
-    const themeIconDark = document.getElementById('theme-icon-dark');
-    const html = document.documentElement;
-
-    // --- Theme Toggler ---
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        html.classList.add('dark');
-        themeIconLight.classList.add('hidden');
-        themeIconDark.classList.remove('hidden');
-    } else {
-        html.classList.remove('dark');
-        themeIconLight.classList.remove('hidden');
-        themeIconDark.classList.add('hidden');
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark');
-            localStorage.theme = 'light';
-            themeIconLight.classList.remove('hidden');
-            themeIconDark.classList.add('hidden');
-        } else {
+        // --- Theme Toggler ---
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             html.classList.add('dark');
-            localStorage.theme = 'dark';
             themeIconLight.classList.add('hidden');
             themeIconDark.classList.remove('hidden');
+        } else {
+            html.classList.remove('dark');
+            themeIconLight.classList.remove('hidden');
+            themeIconDark.classList.add('hidden');
         }
-    });
 
-    // --- Mobile Menu ---
-    const mobileMenuOpenBtn = document.getElementById('mobileMenuOpenBtn');
-    const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        themeToggleBtn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                themeIconLight.classList.remove('hidden');
+                themeIconDark.classList.add('hidden');
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                themeIconLight.classList.add('hidden');
+                themeIconDark.classList.remove('hidden');
+            }
+        });
 
-    mobileMenuOpenBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+        // --- Mobile Menu ---
+        const mobileMenuOpenBtn = document.getElementById('mobileMenuOpenBtn');
+        const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-    mobileMenuCloseBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-    });
+        mobileMenuOpenBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        mobileMenuCloseBtn.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
         });
-    });
 
-    // --- Smooth Scrolling ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href').length > 1) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
-    });
 
-    // --- Scroll-triggered Animations ---
-    const sections = document.querySelectorAll('.fade-in-section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+        // --- Smooth Scrolling ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-    }, {
-        threshold: 0.1
-    });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-    
-    // --- Contact Form Submission ---
-    // --- Contact Form Submission ---
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('form-message');
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzHVZ1vZF3ID1TPj2xAQdFA_L0-YnTt0mZYSe1Y6DIPMrXv1cUytlio0YcBGwdopkx/exec';
+        // --- Scroll-triggered Animations ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-let isSubmitting = false;
-
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Prevent double submission
-    if (isSubmitting) return;
-    isSubmitting = true;
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // Show loading
-    const submitBtn = this.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    
-    // Use only ONE method - iframe method (most reliable)
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden-frame-' + Date.now();
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    
-    const tempForm = document.createElement('form');
-    tempForm.action = SCRIPT_URL;
-    tempForm.method = 'POST';
-    tempForm.target = iframe.name;
-    tempForm.style.display = 'none';
-    
-    // Add data as hidden inputs
-    const fields = [
-        {name: 'name', value: name},
-        {name: 'email', value: email},
-        {name: 'message', value: message}
-    ];
-    
-    fields.forEach(field => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = field.name;
-        input.value = field.value;
-        tempForm.appendChild(input);
-    });
-    
-    document.body.appendChild(tempForm);
-    
-    // Handle the response
-    iframe.onload = function() {
-        // Success - show message and reset form
-        showMessage('✅ Thank you! Your message has been sent successfully.', 'success');
-        contactForm.reset();
+        sections.forEach(section => {
+            observer.observe(section);
+        });
         
-        // Clean up
-        setTimeout(() => {
+        // --- Contact Form Submission ---
+        // --- Contact Form Submission ---
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('form-message');
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzHVZ1vZF3ID1TPj2xAQdFA_L0-YnTt0mZYSe1Y6DIPMrXv1cUytlio0YcBGwdopkx/exec';
+
+    let isSubmitting = false;
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Prevent double submission
+        if (isSubmitting) return;
+        isSubmitting = true;
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Show loading
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        
+        // Use only ONE method - iframe method (most reliable)
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden-frame-' + Date.now();
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        
+        const tempForm = document.createElement('form');
+        tempForm.action = SCRIPT_URL;
+        tempForm.method = 'POST';
+        tempForm.target = iframe.name;
+        tempForm.style.display = 'none';
+        
+        // Add data as hidden inputs
+        const fields = [
+            {name: 'name', value: name},
+            {name: 'email', value: email},
+            {name: 'message', value: message}
+        ];
+        
+        fields.forEach(field => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = field.name;
+            input.value = field.value;
+            tempForm.appendChild(input);
+        });
+        
+        document.body.appendChild(tempForm);
+        
+        // Handle the response
+        iframe.onload = function() {
+            // Success - show message and reset form
+            showMessage('✅ Thank you! Your message has been sent successfully.', 'success');
+            contactForm.reset();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(tempForm);
+                document.body.removeChild(iframe);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                isSubmitting = false;
+            }, 1000);
+        };
+        
+        iframe.onerror = function() {
+            // Error - show error message
+            showMessage('❌ Sorry, there was an error. Please try again.', 'error');
+            
+            // Clean up
             document.body.removeChild(tempForm);
             document.body.removeChild(iframe);
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
             isSubmitting = false;
-        }, 1000);
-    };
-    
-    iframe.onerror = function() {
-        // Error - show error message
-        showMessage('❌ Sorry, there was an error. Please try again.', 'error');
+        };
         
-        // Clean up
-        document.body.removeChild(tempForm);
-        document.body.removeChild(iframe);
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-        isSubmitting = false;
-    };
-    
-    // Submit the form (ONLY ONCE)
-    tempForm.submit();
-});
+        // Submit the form (ONLY ONCE)
+        tempForm.submit();
+    });
 
-function showMessage(text, type) {
-    formMessage.textContent = text;
-    formMessage.className = 'mb-4 p-3 rounded-lg text-center font-medium';
-    
-    if (type === 'success') {
-        formMessage.classList.add('bg-green-100', 'text-green-800');
-    } else {
-        formMessage.classList.add('bg-red-100', 'text-red-800');
-    }
-    
-    formMessage.classList.remove('hidden');
-    
-    setTimeout(() => {
-        formMessage.classList.add('hidden');
-    }, 5000);
-}
-    
-    // Alternative submission method using iframe
-    async function submitWithAlternativeMethod(formData) {
-        return new Promise((resolve, reject) => {
-            // Create a hidden iframe
-            const iframe = document.createElement('iframe');
-            iframe.name = 'form-submitter';
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-            
-            // Create a temporary form
-            const tempForm = document.createElement('form');
-            tempForm.action = SCRIPT_URL;
-            tempForm.method = 'POST';
-            tempForm.target = 'form-submitter';
-            tempForm.style.display = 'none';
-            
-            // Add hidden inputs
-            Object.keys(formData).forEach(key => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = formData[key];
-                tempForm.appendChild(input);
-            });
-            
-            document.body.appendChild(tempForm);
-            
-            // Handle iframe load event
-            iframe.onload = function() {
-                setTimeout(() => {
-                    showMessage('✅ Thank you! Your message has been sent successfully.', 'success');
-                    contactForm.reset();
-                    document.body.removeChild(tempForm);
-                    document.body.removeChild(iframe);
-                    resolve();
-                }, 1000);
-            };
-            
-            iframe.onerror = function() {
-                showMessage('❌ Sorry, there was an error sending your message. Please try again.', 'error');
-                document.body.removeChild(tempForm);
-                document.body.removeChild(iframe);
-                reject(new Error('Iframe submission failed'));
-            };
-            
-            // Submit the form
-            tempForm.submit();
-        });
-    }
-    
-    // Helper function to show messages
     function showMessage(text, type) {
-        formMessage.innerHTML = text;
+        formMessage.textContent = text;
         formMessage.className = 'mb-4 p-3 rounded-lg text-center font-medium';
         
         if (type === 'success') {
-            formMessage.classList.add('bg-green-100', 'text-green-800', 'border', 'border-green-300');
+            formMessage.classList.add('bg-green-100', 'text-green-800');
         } else {
-            formMessage.classList.add('bg-red-100', 'text-red-800', 'border', 'border-red-300');
+            formMessage.classList.add('bg-red-100', 'text-red-800');
         }
         
         formMessage.classList.remove('hidden');
         
-        // Hide message after 5 seconds
         setTimeout(() => {
             formMessage.classList.add('hidden');
         }, 5000);
     }
-    
-    // Email validation function
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-});
-    </script>
-
-</body>
+        
+        // Alternative submission method using iframe
+        async function submitWithAlternativeMethod(formData) {
+            return new Promise((resolve, reject) => {
+                // Create a hidden iframe
+                const iframe = document.createElement('iframe');
+                iframe.name = 'form-submitter';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                
+                // Create a temporary form
+                const tempForm = document.createElement('form');
+                tempForm.action = SCRIPT_URL;
+                tempForm.method = 'POST';
+                tempForm.target = 'form-submitter';
+                tempForm.style.display = 'none';
+                
+                // Add hidden inputs
+                Object.keys(formData).forEach(key => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = formData[key];
+                    tempForm.appendChild(input);
+                });
+                
+                document.body.appendChild(tempForm);
+                
+                // Handle iframe load event
+                iframe.onload = function() {
+                    setTimeout(() => {
+                        showMessage('✅ Thank you! Your message has been sent successfully.', 'success');
+                        contactForm.reset();
+                        document.body.removeChild(tempForm);
+                        document.body.removeChild(iframe);
+                        resolve();
+                    }, 1000);
+                };
+                
+                iframe.onerror = function() {
+                    showMessage('❌ Sorry, there was an error sending your message. Please try again.', 'error');
+                    document.body.removeChild(tempForm);
+                    document.body.removeChild(iframe);
+                    reject(new Error('Iframe submission failed'));
+                };
+                
+                // Submit the form
+                tempForm.submit();
+            });
+        }
+        
+        // Helper function to show messages
+        function showMessage(text, type) {
+            formMessage.innerHTML = text;
+            formMessage.className = 'mb-4 p-3 rounded-lg text-center font-medium';
+            
+            if (type === 'success') {
+                formMessage.classList.add('bg-green-100', 'text-green-800', 'border', 'border-green-300');
+            } else {
+                formMessage.classList.add('bg-red-100', 'text-red-800', 'border', 'border-red-300');
+            }
+            
+            formMessage.classList.remove('hidden');
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+        
+            }); // Close DOMContentLoaded event listener
+        </script>
+    </body>  
 </html>
